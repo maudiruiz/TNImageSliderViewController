@@ -116,7 +116,7 @@ public class TNImageSliderViewController: UIViewController, UICollectionViewData
 
     required public init?(coder aDecoder: NSCoder) {
         
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)! // Unwrap it! :) 
         
     }
     
@@ -195,8 +195,8 @@ public class TNImageSliderViewController: UIViewController, UICollectionViewData
         collectionView.dataSource = self
         view.addSubview(collectionView)
     
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView":collectionView])
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView":collectionView])
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["collectionView":collectionView]) // Just added the (rawValuew:0) for compatibility 
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["collectionView":collectionView]) // Just added the (rawValuew:0) for compatibility 
         
         view.addConstraints(horizontalConstraints)
         view.addConstraints(verticalConstraints)
